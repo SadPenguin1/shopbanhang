@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/admin/category/edit}" method="post" >
+
+	<div>
+		<label>Id :</label>
+		<input  type ="text" name ="id" th:value="${category.id}" placeholder ="Enter id ...."/>
+	</div>
+	<div>
+		<label>Name :</label>
+		<input type ="text" name ="name" th:value="${category.name}" placeholder ="Enter name category ....">
+	</div>	
+	
+	<button type="submit">Save</button>
+
+</body>
+</html>

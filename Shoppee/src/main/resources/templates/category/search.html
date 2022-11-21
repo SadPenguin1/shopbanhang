@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search Category</title>
+</head>
+
+<body>
+	 <div th:replace="common/header :: header"></div>
+	<p>--------------------------------</p>
+	<div> 
+		Category Table
+	<div>
+		<a th:href="@{/admin/category/add}" method ="get"> Add New Category</a>
+	</div>
+	   <form th:action="@{/admin/category/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="categoryName" placeholder="Enter nameCategory...">	
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>	
+	</form>
+	<table border ="1">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				
+			</tr>
+	  		<tr th:each="category : ${categoryList}">
+				<td th:text="${category.id}"></td>
+				<td th:text="${category.name}"></td>			
+				<td>
+					<a th:href="@{'/admin/category/edit?id=' +${category.id}}">Edit</a>
+					<a th:href="@{'/admin/category/delete?id=' +${category.id}}">Delete</a>
+				</td>	
+			</tr>
+			
+			<tfoot>
+				<tr>
+					<td colspan="5">Tổng: <span th:text="${count}"></span></td>
+			</tfoot> 	
+	</table>
+	
+	</div>
+</body>
+</html>

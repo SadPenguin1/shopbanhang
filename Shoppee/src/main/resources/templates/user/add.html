@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Create user</h1>
+	<form th:action="@{/admin/user/add}" method="post" >
+	
+	<div>
+		<label>Name :</label>
+		<input type ="text" name ="name" placeholder ="Enter name ....">
+	</div>		
+	<div>
+		<label>Username :</label>
+		<input  type ="text" name ="username"  placeholder ="Enter username ...."  />	
+	</div>
+	<div>
+		<label>Password :</label>
+		<input  type ="text" name ="password"  placeholder ="Enter password ...."  />	
+	</div>
+	<div>
+		<label>Email :</label>
+		<input  type ="text" name ="email"  placeholder ="Enter email ...."  />	
+	</div>
+
+	<button type="submit">Create</button>		
+	</form>
+	
+
+</body>
+</html>

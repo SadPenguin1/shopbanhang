@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		Bill Table
+	<div>
+		<a th:href="@{/admin/bill/add}" method ="get"> Add New Bill</a>
+	</div>
+	   <form th:action="@{/admin/bill/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">		
+			<input type="text" name ="start" placeholder="Enter start ...">			
+	        <input type="text" name ="end" placeholder="Enter end ...">
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>
+		
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>BuyDate</th>
+				<th>User</th> 
+
+			</tr>
+	  		<tr th:each="bill : ${billList}">
+				<td th:text="${bill.id}"></td>
+				<td th:text="${bill.buyDate}"></td>			
+			<!-- 	<td th:text="${#dates.format(bill.buyDate, 'dd/MM/yyyy HH:mm')}"></td> -->
+				<td th:text="${bill.user.name}"></td>
+				<td>
+					<a th:href="@{'/admin/bill/edit?id=' +${bill.id}}">Edit</a>
+					<a th:href="@{'/admin/bill/delete?id=' +${bill.id}}">Delete</a>
+				</td>
+			</tr> 
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot>
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+	<p>--------------------------------</p>
+	<div>
+		Billitem Table
+	<div>
+		<a th:href="@{/admin/billitem/add}" method ="get"> Add New Billitem</a>
+	</div>
+	   <form th:action="@{/admin/billitem/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="billitem" placeholder="Enter billitem...">
+
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>
+		
+	</form>
+	<table border ="1">
+			<tr>
+				<th>id</th>
+				<th>User</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>BuyPrice</th>
+				
+				
+			</tr>
+	  		<tr th:each="billitem : ${billitemList}">
+				<td th:text="${billitem.id}"></td>			
+				<td th:text="${billitem.bill.user.name}"></td>
+				<td th:text="${billitem.product.name}"></td>		
+				<td th:text="${billitem.quantity}"></td>
+				<td th:text="${billitem.buyPrice}"></td>
+				
+							
+				<td>
+					<a th:href="@{'/admin/billitem/edit?id=' +${billitem.id}}">Edit</a>
+					<a th:href="@{'/admin/billitem/delete?id=' +${billitem.id}}">Delete</a>
+				</td>
+			</tr> 
+				
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot>
+		
+	</table>
+	
+</body>
+</html>

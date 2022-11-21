@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+	<p>--------------------------------</p>
+	<div>
+		Product Table
+	
+	   <form th:action="@{/admin/product/search}" method ="get">
+	   
+	   <div>
+	   		<input type="text" name ="id" placeholder="Enter id...">
+			<input type="text" name ="name" placeholder="Enter name...">			   		
+			<input type="text" name ="price" placeholder="Enter price ...">	
+			
+			<select name="categoryId">
+				<option value ="">Category</option>
+				<option th:each="category :${categoryList}" th:value ="${category.id}" th:text="${category.name}" th:selected="${category.id==categoryId}"></option>
+			</select>		
+			
+			<input type="text" name ="page" placeholder="Enter ..." th:value="${page}">
+			<input type="text" name ="size" placeholder="Enter ..." th:value="${size}">
+			
+			<button type="submit"> Search</button>
+		</div>
+		
+	</form>
+	<table border ="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>						
+			    <th>Image</th>
+			    <th>Description</th>
+			    <th>Choose</th>
+			    
+				
+				
+			</tr>
+	  		<tr th:each="product : ${productList}">
+				<td th:text="${product.id}"></td>
+				<td th:text="${product.name}"></td>
+				<td th:text="${product.price}"></td>
+				<td><img height="100" th:src ="@{'/product/download?filename=' +${product.image}}">
+				<td th:text="${product.description}"></td>		
+				<td>
+					<a th:href="@{'/add-to-cart?id=' +${product.id}}">Mua</a>
+					
+				</td>
+			</tr> 		
+			<tfoot>
+				<tr>
+					<td colspan="5">Tong: <span th:text="${count}"></span>
+					</td>
+			</tfoot>
+		
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/admin/billitem/edit}" method="post" th:object="${billitem}">
+
+
+	<div>
+		<label>id :</label>
+		<input type ="text" name ="id"  th:value ="${billitem.id}" placeholder ="Enter id ...."  >
+	</div> 
+	<div>
+		<label>Bill</label>
+		<select name ="bill.id" >
+		<option th:each ="bill: ${billList}" th:value ="${bill.id}" th:text ="${bill.user.name}" >
+		</select>
+	</div>
+	
+	<div>
+		<label>Product</label>
+		<select name ="product.id" >
+		<option th:each ="product: ${productList}" th:value ="${product.id}" th:text="${product.name}">
+		</select>
+	</div>
+	<div>
+		<label>Quantity :</label>
+		<input  type ="text" name ="quantity" th:value ="${billitem.getQuantity}"  placeholder ="Enter Quantity ...."  />	
+	</div>
+	<div>
+		<label>BuyPrice :</label>
+		<input  type ="text" name ="buyPrice"  th:value ="${billitem.getBuyPrice}" placeholder ="Enter buyPrice ...."  />	
+	</div>
+	 
+	
+	<button type="submit">Save</button>
+
+</body>
+</html>

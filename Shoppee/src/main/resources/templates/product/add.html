@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Create Product</h1>
+	<form th:action="@{/admin/product/add}" method="post" enctype="multipart/form-data">
+	
+	<div>
+		<label>Category</label>
+		<select name ="category.id" >
+		<option th:each ="category: ${categoryList}" th:value ="${category.id}" th:text ="${category.name}">
+		</select>
+	</div>
+	<div>
+		<label>Name :</label>
+		<input type ="text" name ="name" placeholder ="Enter name ....">
+	</div>
+	<div>
+		<label>Image :</label>
+		<input type ="file" name ="file" accept="image/*">
+	</div>
+	<div>
+		<label>Price :</label>
+		<input  type ="text" name ="price"  placeholder ="Enter price ...."  />	
+	</div>
+	
+	<div>
+		<label>Description :</label>
+		<input type ="text" name ="description" placeholder ="Enter description ....">
+	</div>
+	
+	<button type="submit">Create</button>		
+	</form>
+	
+
+</body>
+</html>

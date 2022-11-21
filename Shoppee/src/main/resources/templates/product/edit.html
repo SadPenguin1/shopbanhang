@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/admin/product/edit}" method="post"  enctype="multipart/form-data">
+
+	<div>
+		<label>id :</label>
+		<input type ="text" name ="id"  th:value ="${product.id}" placeholder ="Enter id ...."  >
+	</div> 
+	 <div>
+		<label>Name :</label>
+		<input type ="text" name ="name" th:value ="${product.getName}" placeholder ="Enter name ....">
+	</div> 
+	 <div>
+		<label>Price :</label>
+		<input type ="text" name ="price" th:value ="${product.getPrice}" placeholder ="Enter price ....">
+	</div> 
+	<div>
+		<label>Avatar :</label>
+		<input type ="file" name ="file" accept="image/*">
+	 </div>
+	<div>
+		<label>Description :</label>
+		<input type ="text" name ="description" th:value ="${product.getDescription}" placeholder ="Enter description ....">
+	</div> 
+
+	<button type="submit">Save</button>
+
+</body>
+</html>

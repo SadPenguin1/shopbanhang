@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/admin/userrole/edit}" method="post">
+
+
+	<div>
+		<label>Id:</label>
+		<input type ="text" name ="id" th:value ="${role.getId}"  placeholder ="Enter id ....">
+	</div>
+	<div>
+		<label>Role Name :</label>
+		<input type ="text" name ="role" th:value ="${role.getRole}"placeholder ="Enter role ....">
+	</div>
+	
+	<div>
+		<label>User</label>
+		<select name ="user.id" >
+		<option th:each ="user: ${userList}" th:value ="${user.id}" th:text ="${user.name}">
+		</select>
+	</div>
+	
+	<button type="submit">Save</button>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Jmaster</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div>
+		<a th:href="@{/search}" method ="get"> Mua them</a>
+	</div>
+	<h3>Chi tiết giỏ hàng</h3>
+	<table border = "1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Tên</th>
+				<th>Gía</th>
+				<th>Số lượng</th>
+				<th>Tạm tính</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="entry : ${session.cart}">
+				<td th:text="${entry.key}"></td>
+				<td th:text="${entry.value.product.name}"></td>
+				<td th:text="${entry.value.buyPrice}"></td>
+				<td th:text="${entry.value.quantity}"></td>
+				<td th:text="${entry.value.quantity * entry.value.buyPrice}"></td>
+				<td>
+					<a th:href="@{'/delete-cart?id=' + ${entry.key}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>		
+				<tr>
+					<td colspan="5">Tổng tiền: <span th:text="${total}"></span></td>
+			
+		</tfoot>
+	</table>
+	<a th:href="@{/payment}">Thanh toán</a>
+</body>
+</html>
